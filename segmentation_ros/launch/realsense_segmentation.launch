@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <arg name="camera" default="camera" />
+
+    <node name="segmentation_node" pkg="segmentation_ros" type="segmentation_ros_node" output="screen" respawn="true">
+
+        <param name="voxel_resolution" value="0.001" />
+        <param name="seed_resolution" value="0.025" />
+
+        <!-- <param name="color_importance" value="0.2" />
+        <param name="spatial_importance" value="0.4" />
+        <param name="normal_importance" value="1.0" /> -->
+
+        <param name="color_importance" value="0.5" />
+        <param name="spatial_importance" value="0.4" />
+        <param name="normal_importance" value="20.0" />
+
+        <param name="use_single_cam_transform" value="false" />
+        <param name="use_supervoxel_refinement" value="false" />
+
+        <param name="use_random_sampling" value="false" />
+        <param name="outlier_cost" value="0.002" />
+        <param name="smooth_cost" value="0.0002" /> <!-- outlier_cost * 0.01 -->
+
+        <param name="min_inliers_per_plane" value="50" />
+        <param name="label_cost" value="0.1" /> <!-- config.min_inliers_per_plane*0.5*config.outlier_cost -->
+
+        <param name="max_num_iterations" value="25" />
+        <param name="max_curvature" value="0.001" />
+        <param name="gc_scale" value="0.0001" />
+
+        <param name="pointcloud_topic" value="/realsense/points_aligned" />
+
+    </node>
+
+</launch>

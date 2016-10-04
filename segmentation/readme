@@ -1,0 +1,14 @@
+Build
+mkdir build
+cd build
+cmake ..
+make
+cd ..
+
+
+Running program:
+cd build
+./segmentation_test ../test_data/dining_room_0001a_redux.pcd
+
+
+When linking with the segmentation_ros, need to run "sudo make install" in the build directory

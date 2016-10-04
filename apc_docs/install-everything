@@ -1,0 +1,119 @@
+
+Steve: that's stuff I did:
+--------------------------
+
+# gnome-terminator:
+sudo add-apt-repository ppa:gnome-terminator
+sudo apt-get update
+sudo apt-get install terminator vim
+# yeah I also installed vim ;)
+
+sudo apt-get install ros-indigo-moveit-full ros-indigo-moveit-visual-tools
+pt-get install libxmlrpc-c++8-dev
+
+# non free parts of OpenCV (such as SIFT/SURF, ...)
+sudo add-apt-repository --yes ppa:xqms/opencv-nonfree
+sudo apt-get update
+sudo apt-get install libopencv-nonfree-dev
+
+# Atom
+wget https://atom.io/download/deb -o atom.deb
+sudo dpkg -i atom.deb
+
+# Gitkraken
+wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
+sudo dpkg -i gitkraken-amd64.deb
+
+apm install Sublime-Style-Column-Selection auto-indent color-picker git-control git-plus git-time-machine language-cmake linter linter-cpplint linter-pylint minimap remote-atom tabs-to-spaces tree-view-git-status
+
+# update the ROS workspace
+cd ~/ros_ws/src
+
+# git clone our stuff:
+git clone https://bitbucket.org/acrv/apc_2d_vision.git && git clone https://bitbucket.org/acrv/apc_3d_vision && git clone https://bitbucket.org/acrv/apc_baxter && git clone https://bitbucket.org/acrv/apc_grasping && git clone https://bitbucket.org/acrv/apc_msgs && git clone https://bitbucket.org/acrv/apc_objects && git clone https://bitbucket.org/acrv/apc_rgbd_tf_calibration && git clone https://bitbucket.org/acrv/apc_state_machine && git clone https://bitbucket.org/acrv/cnn_object_classification && git clone https://bitbucket.org/acrv/moveit_lib && git clone https://bitbucket.org/acrv/object_proposal && git clone https://bitbucket.org/acrv/segmentation && git clone https://bitbucket.org/acrv/segmentation_ros && git clone https://bitbucket.org/acrv/shelf_align
+
+# had to put catkin_ignores in some folders as we have changed these for the baxter model mainly
+touch baxter_common/baxter_description/CATKIN_IGNORE
+touch baxter_common/rethink_ee_description/CATKIN_IGNORE
+
+# tools, scripts...
+wget https://raw.githubusercontent.com/Juxi/Tools/master/pull_all_repos.sh
+
+# copy ssh key for dockpc login with keys
+scp -r dockpc@dockpc-nuc:/home/dockpc/ssh-keys/apc* ~/.ssh/nuc-keys/
+ssh-add ~/.ssh/nuc-keys/apc_id_dsa
+# seems that we have to run that multiple times? can this be done in the startup script? bashrc or somewhere?
+
+#  pcl version needs to be checked ...
+#    fixed this by changing our repositories
+
+# ros RealSense
+cd src/ros_realsense/
+./scripts/patch-uvcvideo-ubuntu-mainline.sh
+sudo modpobe uvcvideo
+
+
+things changed since the flash of the image on Wednesday:
+----------------------------------------------------------
+
+sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
+
+sudo apt-get update
+sudo apt-get install libpcl-all
+sudo apt-get install ros-indigo-pcl-conversions
+sudo apt-get install libeigen3-dev
+sudo apt-get install libnlopt-dev
+sudo apt-get install libxmlrpc-c++8-dev
+
+cd ~/ros_ws/src/
+git clone https://bitbucket.org/traclabs/trac_ik.git
+
+cd ~/ros_ws/src/
+git clone https://github.com/OpenKinect/libfreenect2.git
+cd libfreenect2/depends/
+./download_debs_trusty.sh
+sudo apt-get install build-essential cmake pkg-config
+sudo dpkg -i debs/libusb*deb
+sudo apt-get install libturbojpeg libjpeg-turbo8-dev
+sudo dpkg -i debs/libglfw3*deb; sudo apt-get install -f;
+
+(If the next command conflicts with other packages, don't do it.)
+sudo apt-get install libgl1-mesa-dri-lts-vivid
+
+touch ~/ros_ws/src/libfreenect2/CATKIN_IGNORE
+
+cd ..
+mkdir build && cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/freenect2 -DENABLE_CXX11=ON
+make
+sudo make install
+
+cd ~/ros_ws/src
+git clone https://github.com/node-iai/iai_kinect2.git
+
+cd ~/catkin_ws/src/
+git clone https://github.com/code-iai/iai_kinect2.git
+cd iai_kinect2
+rosdep install -r --from-paths .
+cd ~/catkin_ws
+
+Open iai_kinect2/kinect2_bridge/CMakeLists.txt and change "$ENV{HOME}" to "/usr/local/"
+
+catkin_make -j1
+
+# failed to clone that before...
+git clone https://bitbucket.org/acrv/cnn_object_classification
+
+cd wherever you want the package to go
+git clone https://github.com/PointCloudLibrary/pcl/tree/master
+cd pcl
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+
+stuff that might still be off:
+--------------------------------------
+kinect2_bridge not yet tested
+rospack seems to have an issue loading the shared library when NOT launched within a ros initialised environment, such as ./baxter sim

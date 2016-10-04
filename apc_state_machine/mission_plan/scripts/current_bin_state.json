@@ -1,0 +1,45 @@
+{
+    "bin_contents": {
+        "bin_A": [
+            "laugh_out_loud_joke_book"
+        ],
+        "bin_B": [
+            "easter_turtle_sippy_cup"
+        ],
+        "bin_C": [
+            "kyjen_squeakin_eggs_plush_puppies"
+        ],
+        "bin_D": [
+            "oral_b_toothbrush_red",
+            "woods_extension_cord",
+            "kleenex_tissue_box"
+        ],
+        "bin_E": [
+            "i_am_a_bunny_book"
+        ],
+        "bin_F": [],
+        "bin_G": [
+            "jane_eyre_dvd"
+        ],
+        "bin_H": [
+            "soft_white_lightbulb"
+        ],
+        "bin_I": [
+            "cool_shot_glue_sticks",
+            "dasani_water_bottle",
+            "oral_b_toothbrush_green"
+        ],
+        "bin_J": [
+            "up_glucose_bottle"
+        ],
+        "bin_K": [
+            "dove_beauty_bar"
+        ],
+        "bin_L": [
+            "expo_dry_erase_board_eraser"
+        ],
+        "tote": [
+            "expo_dry_erase_board_eraser"
+        ]
+    }
+}

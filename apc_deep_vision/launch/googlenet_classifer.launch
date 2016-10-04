@@ -1,0 +1,13 @@
+<launch>
+    <param name="caffe_root" value="/home/apc/co/caffe/" />
+    <param name="model_root" value="$(find googlenet_classification_node)/models/" />
+    <param name="snapshot_filename" value="chris_iter_2500.caffemodel" />
+    <!-- <param name="snapshot_filename" value="stowing_1.caffemodel" /> -->
+    <!-- <param name="snapshot_filename" value="stowing_augmented.caffemodel" /> -->
+    <param name="class_txt_file" value="classes.txt" />
+
+    <node pkg="googlenet_classification_node" type="googlenet_node.py" name="googlenet_node" output="screen">
+    </node>
+
+
+</launch>

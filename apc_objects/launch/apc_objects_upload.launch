@@ -1,0 +1,3 @@
+<launch>
+	<rosparam command="load" file="$(find apc_objects)/config/apc_objects.yaml" />
+</launch>

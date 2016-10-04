@@ -1,0 +1,94 @@
+{
+    "bin_contents": {
+        "bin_A": [
+            "laugh_out_loud_joke_book"
+        ],
+        "bin_B": [
+            "easter_turtle_sippy_cup"
+        ],
+        "bin_C": [
+            "kyjen_squeakin_eggs_plush_puppies"
+        ],
+        "bin_D": [
+            "oral_b_toothbrush_red",
+            "woods_extension_cord",
+            "kleenex_tissue_box"
+        ],
+        "bin_E": [
+            "i_am_a_bunny_book"
+        ],
+        "bin_F": [
+            "expo_dry_erase_board_eraser"
+        ],
+        "bin_G": [
+            "jane_eyre_dvd"
+        ],
+        "bin_H": [
+            "soft_white_lightbulb"
+        ],
+        "bin_I": [
+            "cool_shot_glue_sticks",
+            "dasani_water_bottle",
+            "oral_b_toothbrush_green"
+        ],
+        "bin_J": [
+            "up_glucose_bottle"
+        ],
+        "bin_K": [
+            "dove_beauty_bar"
+        ],
+        "bin_L": [
+            "expo_dry_erase_board_eraser"
+        ]
+    },
+    "work_order": [
+        {
+            "bin": "bin_A",
+            "item": "laugh_out_loud_joke_book"
+        },
+        {
+            "bin": "bin_B",
+            "item": "easter_turtle_sippy_cup"
+        },
+        {
+            "bin": "bin_C",
+            "item": "kyjen_squeakin_eggs_plush_puppies"
+        },
+        {
+            "bin": "bin_D",
+            "item": "kleenex_tissue_box"
+        },
+        {
+            "bin": "bin_E",
+            "item": "i_am_a_bunny_book"
+        },
+        {
+            "bin": "bin_F",
+            "item": "expo_dry_erase_board_eraser"
+        },
+        {
+            "bin": "bin_G",
+            "item": "jane_eyre_dvd"
+        },
+        {
+            "bin": "bin_H",
+            "item": "soft_white_lightbulb"
+        },
+        {
+            "bin": "bin_I",
+            "item": "cool_shot_glue_sticks"
+        },
+        {
+            "bin": "bin_J",
+            "item": "up_glucose_bottle"
+        },
+        {
+            "bin": "bin_K",
+            "item": "dove_beauty_bar"
+        },
+        {
+            "bin": "bin_L",
+            "item": "expo_dry_erase_board_eraser"
+        }
+    ]
+}

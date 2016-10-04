@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <arg name="camera" default="camera" />
+
+    <node name="ros_realsense" pkg="ros_realsense" type="ros_realsense_node" output="screen" respawn="true">
+
+    </node>
+
+    <include file="$(find ros_realsense)/launch/realsense_frames.launch">
+        <arg name="camera" value="$(arg camera)" />
+    </include>
+
+</launch>

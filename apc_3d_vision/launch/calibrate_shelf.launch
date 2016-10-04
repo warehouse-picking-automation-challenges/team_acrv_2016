@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <machine name="nuc" address="dockpc-nuc" default="false"
+        env-loader="/home/dockpc/ros_ws/ros_env.sh" user="dockpc" />
+
+    <!-- Parameters  -->
+    <arg name="kinect" default="true" />
+    <arg name="kinect_machine" value="nuc" /> <!--  default="localhost" -->
+
+    <group if="$(arg kinect)">
+        <include file="$(find apc_rgbd_tf_calibration)/launch/baxter_kinect_calibrated.launch"/>
+        <node name="kinect_toggle" pkg="baxter_kinect" type="kinect_toggle.py" output="screen" respawn="true" machine="$(arg kinect_machine)" />
+    </group>
+
+    <node pkg="apc_3d_vision" type="manual_point_cloud_labeller" name="calibrate_shelf" output="screen">
+        <param name="record_new_shelf_cloud" value="true" />
+        <param name="saved_shelf_cloud_fn" value="$(find apc_3d_vision)/models/empty_shelf_cloud.pcd" />
+        <param name="shelf_model_fn" value="$(find apc_3d_vision)/models/pod_lowres.pcd" />
+        <param name="labelled_cloud_fn" value="$(find apc_3d_vision)/models/empty_shelf_labelled.pcd" />
+        <param name="aligned_shelf_fn" value="$(find apc_3d_vision)/models/aligned_pod.pcd" />
+        <param name="found_transform_fn" value="$(find apc_3d_vision)/models/initial_shelf_tf.yaml" />
+        <param name="points_topic" value="/kinect2/qhd/points" />
+        <param name="z_bounds" value="0.2" />
+        <param name="max_depth" value="2.0" />
+        <param name="max_right_crop" value="0.50" />
+        <param name="max_left_crop" value="-0.50" />
+    </node>
+</launch>

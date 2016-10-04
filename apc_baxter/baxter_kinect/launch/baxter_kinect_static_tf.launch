@@ -1,0 +1,17 @@
+<launch>
+  <arg name="pi/2" value="1.5707963267948966" />
+
+  <arg name="baxter_link_pose" value="0.105 -0.055 0.94 -1.6 0 -2.175"/>
+  <!-- <arg name="baxter_link_pose" value="0.068 0.005 0.965 -0.037-pi/2 -0.114 -(0.636+pi/2) "/> -->
+  <!-- <arg name="baxter_link_pose" value="0.12 -0.05 0.965 -1.607 -0.0 -2.206"/> -->
+
+  <!-- - Translation: [0.068 0.005 0.965]
+  - Rotation: in Quaternion [0.000 0.313 -0.048 0.948]
+              in RPY (radian) [-0.037 0.636 -0.114]
+              in RPY (degree) [-2.120 36.465 -6.522] -->
+
+
+  <node pkg="tf" type="static_transform_publisher" name="baxter_kinect_link_broadcaster"
+               args="$(arg baxter_link_pose) /base /kinect2_link 10" />
+               <!-- args="$(arg baxter_link_pose) /world /kinect2_link 100" /> -->
+</launch>

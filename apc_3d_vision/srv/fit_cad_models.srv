@@ -1,0 +1,6 @@
+std_msgs/String[] candidate_cad_model_paths_array
+sensor_msgs/PointCloud2[] labelled_points_array
+---
+std_msgs/Bool success
+geometry_msgs/PoseStamped[] cad_model_pose_array
+sensor_msgs/PointCloud2[] cad_model_points_array

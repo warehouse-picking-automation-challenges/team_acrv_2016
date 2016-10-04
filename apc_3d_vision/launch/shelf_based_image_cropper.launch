@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<launch>
+  <node pkg="apc_3d_vision" type="shelf_based_image_cropper_node" name="shelf_based_image_cropper_node" output="screen">
+      <rosparam command="load" file="$(find apc_3d_vision)/launch/BinDim.yaml" />
+  </node>
+</launch>

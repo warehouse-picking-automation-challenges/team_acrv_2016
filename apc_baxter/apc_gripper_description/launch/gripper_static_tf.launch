@@ -1,0 +1,36 @@
+<launch>
+
+    <arg name="suction_cup_z_offset" default="0.448"/>
+    <arg name="suction_cup_z_collision_offset" default="0.0"/>
+    <arg name="suction_cup_z_delta" default="0.463"/> <!-- suction_cup_z_offset + suction_cup_z_collision_offset -->
+    <arg name="suction_cup_z_offset_90" default="0.374"/>
+    <arg name="suction_cup_x_offset_90" default="0.050"/>
+    <arg name="suction_cup_x_collision_offset_90" default="0.0"/>
+    <arg name="suction_cup_x_delta_90" default="0.050"/> <!-- suction_cup_x_offset_90 + suction_cup_x_collision_offset_90 -->
+    <arg name="left_arm" default="true" />
+
+    <!-- <arg name="realsense_link_pose" value="-0.09 0.00 0.02 0.0 -1.85 0.0"/> -->
+
+    <!-- Define the left_endpoint as our sucker tf in a frame such that x faces out of the sucker -->
+    <group if="$(arg left_arm)">
+      <node pkg="tf" type="static_transform_publisher" name="gripper_base_tf" args="0 0 $(arg suction_cup_z_delta) 0 -1.57 0 left_gripper_base left_endpoint 1000" />
+
+      <node pkg="tf" type="static_transform_publisher" name="gripper_base_90_tf" args="$(arg suction_cup_x_delta_90) 0 $(arg suction_cup_z_offset_90) 0 0 0 left_gripper_base left_endpoint_90 1000" />
+    </group>
+    <group unless="$(arg left_arm)">
+      <node pkg="tf" type="static_transform_publisher" name="gripper_base_tf" args="0 0 $(arg suction_cup_z_delta) 0 -1.57 0 right_gripper_base right_endpoint 1000" />
+
+      <node pkg="tf" type="static_transform_publisher" name="gripper_base_90_tf" args="$(arg suction_cup_x_delta_90) 0 $(arg suction_cup_z_offset_90) 0 0 0 right_gripper_base right_endpoint_90 1000" />
+    </group>
+
+
+
+    <!-- <node pkg="tf" type="static_transform_publisher" name="left_sucker" args="0 0 0.331025 0 0 0 1 left_gripper left_sucker 100" /> -->
+    <!-- <node pkg="tf" type="static_transform_publisher" name="left_realsense" args="-0.1085 0 0.01 0 0.70711 0 -0.70711 left_hand left_realsense 100" /> -->
+
+
+    <!-- <node pkg="tf" type="static_transform_publisher" name="hand_to_camera_tf"
+       args="$(arg realsense_link_pose) /left_hand /camera_link 10" /> -->
+
+
+</launch>

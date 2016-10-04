@@ -1,0 +1,6 @@
+sensor_msgs/PointCloud2 input_cloud
+std_msgs/Bool updateTF
+std_msgs/Bool segmentPointcloud
+---
+sensor_msgs/PointCloud2 segmented_cloud
+std_msgs/Bool success

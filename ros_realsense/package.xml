@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <name>ros_realsense</name>
+  <version>0.0.0</version>
+  <description>A ROS wrapper for the librealsense library</description>
+  <maintainer email="james.sergeant@qut.edu.au">James Sergeant</maintainer>
+
+  <license>GNUv3</license>
+
+  <url type="website">http://github.com/jamessergeant/ros_realsense.git</url>
+
+  <author email="james.sergeant@qut.edu.au">James Sergeant</author>
+  <author email="c.lehnert@qut.edu.au">Chris Lehnert</author>
+  <author email="adam.tow@qut.edu.au">Adam Tow</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+
+  </export>
+</package>

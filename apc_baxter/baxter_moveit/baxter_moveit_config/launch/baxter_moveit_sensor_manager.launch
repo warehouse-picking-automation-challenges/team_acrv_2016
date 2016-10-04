@@ -1,0 +1,19 @@
+<launch>
+     <arg name="camera_link_pose" default="0.14 -0.120 0.06 -1.53 -0.02 -1.61"/>
+     <arg name="kinect" default="true"/>
+     <group if="$(arg kinect)" >
+         <!-- launch openni to talk to kinect -->
+         <!--include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
+         </include-->
+         <!-- Users update this to set transform between camera and robot -->
+         <!--node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster"
+               args="$(arg camera_link_pose) /torso /kinect2_head_link 100" -->
+
+         <!-- octomap parameters for moveit -->
+         <group ns="move_group" >
+             <param name="octomap_frame" type="string" value="kinect2_link" />
+             <param name="octomap_resolution" type="double" value="0.03" />
+             <rosparam command="load" file="$(find baxter_moveit_config)/config/kinect2_sensor.yaml" />
+         </group>
+     </group>
+</launch>

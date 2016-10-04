@@ -1,0 +1,74 @@
+{
+    "bin_contents": {
+        "bin_A": [
+            "kleenex_tissue_box",
+            "kyjen_squeakin_eggs_plush_puppies",
+            "rawlings_baseball",
+            "jane_eyre_dvd",
+            "soft_white_lightbulb"
+        ],
+        "bin_B": [
+            "up_glucose_bottle",
+            "woods_extension_cord"
+        ],
+        "bin_C": [
+            "oral_b_toothbrush_red",
+            "oral_b_toothbrush_green",
+            "elmers_washable_no_run_school_glue"
+        ],
+        "bin_D": [
+            "fitness_gear_3lb_dumbbell",
+            "kyjen_squeakin_eggs_plush_puppies",
+            "oral_b_toothbrush_red"
+        ],
+        "bin_E": [
+            "kleenex_paper_towels",
+            "expo_dry_erase_board_eraser",
+            "dr_browns_bottle_brush",
+            "oral_b_toothbrush_red"
+        ],
+        "bin_F": [
+            "rolodex_jumbo_pencil_cup"
+        ],
+        "bin_G": [
+            "jane_eyre_dvd"
+        ],
+        "bin_H": [
+            "barkely_hide_bones",
+            "creativity_chenille_stems"
+        ],
+        "bin_I": [
+            "dasani_water_bottle",
+            "staples_index_cards",
+            "clorox_utility_brush",
+            "rawlings_baseball",
+            "oral_b_toothbrush_green"
+        ],
+        "bin_J": [
+            "safety_first_outlet_plugs",
+            "expo_dry_erase_board_eraser"
+        ],
+        "bin_K": [
+            "elmers_washable_no_run_school_glue",
+            "folgers_classic_roast_coffee",
+            "platinum_pets_dog_bowl"
+        ],
+        "bin_L": [
+            "expo_dry_erase_board_eraser"
+        ]
+    },
+    "tote_contents": [
+        "up_glucose_bottle",
+        "expo_dry_erase_board_eraser",
+        "ticonderoga_12_pencils",
+        "jane_eyre_dvd",
+        "kleenex_paper_towels",
+        "ticonderoga_12_pencils",
+        "peva_shower_curtain_liner",
+        "i_am_a_bunny_book",
+        "cool_shot_glue_sticks",
+        "i_am_a_bunny_book",
+        "dr_browns_bottle_brush",
+        "fitness_gear_3lb_dumbbell"
+    ]
+}

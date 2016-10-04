@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="left_arm" default="true" />
+	<arg name="realsense_link_pose" value="-0.09004517626174949, -0.0013319011709782744, 0.023536622641201684, -3.1266234585613408, -1.17, -3.1173632810483434"/>
+
+	<group if="$(arg left_arm)">
+		<node pkg="tf" type="static_transform_publisher" name="hand_to_camera_tf"
+	               args="$(arg realsense_link_pose) /left_hand /camera_link 10" />
+	</group>
+	<group unless="$(arg left_arm)">
+		<node pkg="tf" type="static_transform_publisher" name="hand_to_camera_tf"
+	               args="$(arg realsense_link_pose) /right_hand /camera_link 10" />
+	</group>
+</launch>

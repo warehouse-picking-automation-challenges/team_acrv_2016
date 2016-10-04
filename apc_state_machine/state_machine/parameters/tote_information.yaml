@@ -1,0 +1,45 @@
+# RIGHT_ARM
+tote_information:
+  {'tote':
+    {'box_x': 0.63,
+    'box_y':  0.39,
+    'box_z':  0.3,
+    'position_x': 0.65,
+    'position_y': -0.38,
+    'position_z': -0.54,
+    'orientation_roll': 0.0,
+    'orientation_pitch': 0.0,
+    'orientation_yaw': -2.37 },
+  'tote_pillar':
+    {'box_x': 0.0,
+    'box_y':  0.0,
+    'box_z':  0.0,
+    'position_x': -0.36,
+    'position_y': 0.74,
+    'position_z': -0.68,
+    'orientation_roll': 0.0,
+    'orientation_pitch': 0.0,
+    'orientation_yaw': -0.85 }}
+# LEFT ARM
+# tote_information:
+#   {'tote':
+#     {'box_x': 0.65,
+#     'box_y':  0.5,
+#     'box_z':  0.3,
+#     'position_x': 0.15,
+#     'position_y': 0.62,
+#     'position_z': -0.54,
+#     'orientation_roll': 0.0,
+#     'orientation_pitch': 0.0,
+#     'orientation_yaw': -0.85 },
+#   'tote_pillar':
+#     {'box_x': 0.0,
+#     'box_y':  0.0,
+#     'box_z':  0.0,
+#     'position_x': -0.36,
+#     'position_y': 0.74,
+#     'position_z': -0.68,
+#     'orientation_roll': 0.0,
+#     'orientation_pitch': 0.0,
+#     'orientation_yaw': -0.85 }}
+#     ## MEASURED FROM TORSO TF

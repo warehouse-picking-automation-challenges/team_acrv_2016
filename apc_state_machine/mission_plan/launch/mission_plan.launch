@@ -1,0 +1,22 @@
+<launch>
+    <arg name="mission_strategy" default="default"/>
+    <param name="tell_me_the_task_again_please" value="pick" type="str"/>
+
+    <!-- does not really need to be set but can / should?  -->
+    <!-- # task is decided by the json file\:
+         # is there a work_order in the file? -> picking
+         # is there tote_contents in the file? -> stowing       -->
+
+    <arg name="mission_file" default="../mission_descriptions/order.json"/>
+    <!-- <arg name="mission_file" default="../mission_descriptions/smallorder.json"/> -->
+    <!-- <arg name="mission_file" default="../mission_descriptions/james_json.json"/> -->
+    <!-- <arg name="mission_file" default="../mission_descriptions/pick.json"/> -->
+    <!-- <arg name="mission_file" default="../mission_descriptions/sample_stow_task.json"/> -->
+
+    <node name="mission_plan_node" pkg="mission_plan" type="mission_plan_node.py" output="screen" cwd="node">
+        <!-- <param name="task" value="$(arg task)" type="str"/> -->
+        <param name="mission_file" value="$(arg mission_file)" type="str"/>
+        <param name="mission_strategy" value="$(arg mission_strategy)" type="str"/>
+    </node>
+
+</launch>

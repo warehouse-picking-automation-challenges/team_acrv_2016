@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<launch>
+  <node pkg="apc_3d_vision" type="test_service_nodes" name="test_service_nodes" output="screen">
+  </node>
+</launch>

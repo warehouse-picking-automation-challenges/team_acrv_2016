@@ -1,0 +1,98 @@
+{
+    "bin_contents": {
+        "bin_A": [
+            "cool_shot_glue_sticks"
+        ],
+        "bin_B": [
+            "up_glucose_bottle",
+            "womens_knit_gloves"
+        ],
+        "bin_C": [
+            "scotch_bubble_mailer",
+            "scotch_duct_tape",
+            "dasani_water_bottle"
+        ],
+        "bin_D": [
+            "rolodex_jumbo_pencil_cup"
+        ],
+        "bin_E": [
+            "expo_dry_erase_board_eraser",
+            "i_am_a_bunny_book"
+        ],
+        "bin_F": [
+            "expo_dry_erase_board_eraser",
+            "cherokee_easy_tee_shirt"
+        ],
+        "bin_G": [
+            "oral_b_toothbrush_red"
+        ],
+        "bin_H": [
+            "elmers_washable_no_run_school_glue",
+            "woods_extension_cord"
+        ],
+        "bin_I": [
+            "creativity_chenille_stems"
+        ],
+        "bin_J": [
+            "laugh_out_loud_joke_book",
+            "safety_first_outlet_plugs",
+            "folgers_classic_roast_coffee"
+        ],
+        "bin_K": [
+            "up_glucose_bottle"
+        ],
+        "bin_L": [
+            "platinum_pets_dog_bowl"
+        ]
+    },
+    "work_order": [
+        {
+            "bin": "bin_A",
+            "item": "cool_shot_glue_sticks"
+        },
+        {
+            "bin": "bin_B",
+            "item": "womens_knit_gloves"
+        },
+        {
+            "bin": "bin_C",
+            "item": "dasani_water_bottle"
+        },
+        {
+            "bin": "bin_D",
+            "item": "rolodex_jumbo_pencil_cup"
+        },
+        {
+            "bin": "bin_E",
+            "item": "expo_dry_erase_board_eraser"
+        },
+        {
+            "bin": "bin_F",
+            "item": "expo_dry_erase_board_eraser"
+        },
+        {
+            "bin": "bin_G",
+            "item": "oral_b_toothbrush_red"
+        },
+        {
+            "bin": "bin_H",
+            "item": "elmers_washable_no_run_school_glue"
+        },
+        {
+            "bin": "bin_I",
+            "item": "creativity_chenille_stems"
+        },
+        {
+            "bin": "bin_J",
+            "item": "folgers_classic_roast_coffee"
+        },
+        {
+            "bin": "bin_K",
+            "item": "up_glucose_bottle"
+        },
+        {
+            "bin": "bin_L",
+            "item": "platinum_pets_dog_bowl"
+        }
+    ]
+}

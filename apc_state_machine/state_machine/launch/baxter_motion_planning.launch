@@ -1,0 +1,50 @@
+<launch>
+    <arg name="config" default="true"/>
+    <arg name="left_arm" default="false"/>
+    <arg name="rviz_config" default="$(find baxter_moveit_config)/launch/moveit.rviz" />
+    <!-- <arg name="is_sucker_0" default="true" /> -->
+    <arg name="baxter_xacro" value="$(find baxter_description)/urdf/baxter.urdf.xacro"/>
+    <!-- <arg name="sucker_90" value="$(find baxter_description)/urdf/baxter_90.urdf.xacro"/> -->
+
+
+    <!-- launch joint trajectory action server -->
+    <!-- <node name="joint_trajectory_action_server" pkg="baxter_interface" type="joint_trajectory_action_server.py" output="screen" cwd="node"/> -->
+
+    <!-- launch moveit_lib -->
+    <node name="moveit_lib" pkg="moveit_lib" type="moveit_robot" output="screen" cwd="node"/>
+
+    <!-- launch MoveIt! with the appropriate xacro -->
+    <param name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg baxter_xacro)" />
+    <include file="$(find baxter_moveit_config)/launch/apc_baxter_moveit.launch">
+        <arg name="config" value="$(arg config)" />
+        <arg name="rviz_config" value="$(arg rviz_config)" />
+        <!-- load_description must be false to use the robot_description specified above -->
+        <arg name="load_description" value="false"/>
+    </include>
+
+    <!-- launches tf's for gripper frames and realsense frame -->
+    <include file="$(find apc_gripper_description)/launch/gripper_static_tf.launch">
+      <arg name="left_arm" value="$(arg left_arm)"/>
+    </include>
+
+    <!-- TURN BACK ON -->
+    <include file="$(find apc_grasping)/launch/detect_grasp_candidates.launch"/>
+
+    <!-- TURN BACK ON  -->
+    <include file="$(find apc_grasping)/launch/grasp_selection_service.launch"/>
+
+    <!-- launch update_endpoint_weight node -->
+    <node name="update_endpoint_weight" pkg="apc_grasping" type="update_endpoint_weight" output="screen" respawn="True" />
+
+    <!-- Don't know if this is still used ??? -->
+    <!-- <include file="$(find state_machine)/launch/static_tf.launch" /> -->
+
+    <param name="max_republish_tries" value="5"/>
+    <node name="shelf_republisher_node" pkg="apc_3d_vision" type="shelf_republisher_node.py" output="screen" cwd="node"/>
+
+    <!-- <param name="apc_object_attach_tf" value="left_hand" /> -->
+    <node name="attach_object_service" pkg="apc_grasping" type="attach_object_to_robot" output="screen" />
+
+    <node name="fill_bins_and_tote_service" pkg="apc_grasping" type="fill_bins_and_tote" output="screen" />
+
+</launch>

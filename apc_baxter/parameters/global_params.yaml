@@ -1,0 +1,9 @@
+# Planning / MoveIt
+apc_planning_scene_topic: /planning_scene
+
+# Shelf Republisher Looks for:
+max_republish_tries: 5
+
+
+# Where do we attach an object as collision object to:
+# apc_object_attach_tf:	/left_endpoint		# should now be set by service call!

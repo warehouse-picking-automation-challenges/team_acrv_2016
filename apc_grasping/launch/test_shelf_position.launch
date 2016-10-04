@@ -1,0 +1,34 @@
+<launch>
+    <param name="test_shelf/move_group" value="left_arm" type="str" />
+    <param name="test_shelf/visualize" value="0" type="int" />
+    <param name="test_shelf/testing_distance" value="0.3" type="double" />
+    <param name="test_shelf/step_size" value="0.01" type="double" />
+    <param name="test_shelf/shelf_height" value="0.96" type="double" />
+    <param name="test_shelf/shelf_width" value="0.8" type="double" />
+    <param name="test_shelf/shelf_depth" value="0.40" type="double" />
+    <param name="test_shelf/shelf_x" value="0.9" type="double" />
+    <param name="test_shelf/shelf_y" value="0.9" type="double" />
+    <param name="test_shelf/shelf_z" value="-0.87" type="double" />
+    <param name="test_shelf/shelf_roll" value="90.0" type="double" />
+    <param name="test_shelf/shelf_pitch" value="0.0" type="double" />
+    <param name="test_shelf/shelf_yaw" value="135.0" type="double" />
+    <param name="test_shelf/x_length" value="15" type="int" />
+    <param name="test_shelf/y_length" value="15" type="int" />
+    <param name="test_shelf/z_length" value="6" type="int" />
+    <param name="test_shelf/x_offset" value="0.41" type="double" />
+    <param name="test_shelf/y_offset" value="1.77" type="double" />
+    <param name="test_shelf/z_offset" value="-0.41" type="double" />
+    <param name="test_shelf/marker_scale" value="0.02" type="double" />
+    <param name="test_shelf/ik_attemps" value="1" type="int" />
+    <param name="test_shelf/shelf_frame" value="1" type="int" />
+
+    <node name="test_shelf_position" pkg="apc_grasping" type="test_shelf_position"
+        respawn="true" output="screen">
+
+        <rosparam command="load"
+          file="$(find baxter_moveit_config)/config/kinematics.yaml"/>
+
+        <!-- <rosparam command="load"
+          file="$(find baxter_moveit_config)/config/kinematics_rotation_only.yaml"/> -->
+     </node>
+</launch>

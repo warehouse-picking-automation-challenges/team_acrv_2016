@@ -1,0 +1,12 @@
+<launch>
+    <param name="test_rotation/row" value="21" type="int" />
+    <param name="test_rotation/col" value="21" type="int" />
+    <param name="test_rotation/square_size" value="1.0" type="double" />
+    <param name="test_rotation/angle_diff" value="10.0" type="double" />
+    <param name="test_rotation/marker_scale" value="0.10" type="double" />
+    <param name="test_rotation/move_group" value="left_arm_90" type="str" />
+
+    <node name="test_rotational_weighting" pkg="apc_grasping" type="test_rotational_weighting"
+        respawn="false" output="screen">
+     </node>
+</launch>

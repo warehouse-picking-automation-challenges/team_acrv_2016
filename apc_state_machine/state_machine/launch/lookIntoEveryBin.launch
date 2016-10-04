@@ -1,0 +1,15 @@
+<launch>
+    <!-- launch the mission plan and state machine -->
+    <!-- <include file="$(find mission_plan)/launch/mission_plan.launch"/> -->
+    <rosparam command="load" file="$(find state_machine)/parameters/shelf_layout.yaml"/>
+    <rosparam command="load" file="$(find state_machine)/parameters/tote_information.yaml"/>
+    <!-- <rosparam command="load" file="$(find state_machine)/parameters/item_id_mapping.yaml"/> -->
+    <!-- <node name="smach" pkg="state_machine" type="shelfPicking_smach.py" output="screen" cwd="node"/> -->
+    <!-- <node name="smach" pkg="state_machine" type="stowing_task_smach.py" output="screen" cwd="node"/> -->
+    <node name="smach" pkg="state_machine" type="lookIntoEveryBin.py" output="screen" cwd="node"/>
+    <!-- <node name="smach" pkg="state_machine" type="handleThis.py" output="screen" cwd="node"/> -->
+    <!-- <node name="smach" pkg="state_machine" type="grasp_selection_test_machine.py" output="screen" cwd="node"/> -->
+    <!-- <node name="smach" pkg="state_machine" type="shelf_bin_reach_test_nograspselection.py" output="screen" cwd="node"/> -->
+    <!-- <node name="smach" pkg="state_machine" type="cartesian_test_machine.py" output="screen" cwd="node"/> -->
+    <!-- <node name="smach" pkg="state_machine" type="loopDetection.py" output="screen" cwd="node"/> -->
+</launch>

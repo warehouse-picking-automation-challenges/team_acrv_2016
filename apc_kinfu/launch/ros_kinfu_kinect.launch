@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <arg name="realsense" default="false" />
+ <!-- <arg name="sim" default="false" /> -->
+
+ <!-- <group if="$(arg sim)">
+  <arg name="kf_link_pose" default="0.0 0.0 0.0 0 0.0 0.0"/>
+  <node pkg="tf" type="static_transform_publisher" name="kf_world_link_broadcaster"
+       args="$(arg kf_link_pose) /kf_world /world 100" />
+  <node pkg="tf" type="static_transform_publisher" name="camera_world_link_broadcaster"
+       args="$(arg kf_link_pose) /world /camera_link 100" />
+  </group>
+
+   <arg name="build_kinfu" default="true" />
+   <group if="$(arg build_kinfu)">
+    <arg name="kf_link_pose" default="0.0 0.0 0.0 0.0 -1.57 0.0"/>
+    <node pkg="tf" type="static_transform_publisher" name="camera_world_link_broadcaster"
+         args="$(arg kf_link_pose) /world /camera_link 100" />
+    </group> -->
+
+  <group if="$(arg realsense)">
+  <include file="$(find ros_realsense)/launch/realsense_camera.launch"/>
+  </group>
+
+  <node pkg="ros_kinfu" type="ros_kinfu" name="ros_kinfu" output="screen" respawn="true">
+
+    <!-- INPUT Subscriber Topics -->
+    <!--param name="depth_image_topic" value="/camera/depth/image_raw" -->
+    <param name="depth_image_topic" value="/kinect2/qhd/image_depth_rect" />
+    <param name="rgb_image_topic" value="/kinect2/qhd/image_color" />
+    <param name="camera_info_topic" value="/kinect2/qhd/camera_info" />
+
+     <!-- Output Publisher Topics -->
+    <param name="tsdf_topic" value="/ros_kinfu/tsdf/points" />
+    <param name="cloud_topic" value="/ros_kinfu/depth/points" />
+    <param name="cloud_colour_topic" value="/ros_kinfu/depth_registered/points" />
+    <param name="camera_pose_topic" value="/ros_kinfu/camera/pose" />
+    <param name="depth_output_image_topic" value="/ros_kinfu/depth/image" />
+    <param name="kinfu_reset_topic" value="/ros_kinfu/reset" />
+    <param name="kinfu_pause_topic" value="/ros_kinfu/pause" />
+
+
+    <!-- Frames ID -->
+    <param name="kf_world_frame_id" value="/kf_world" />
+    <param name="kf_camera_frame_id" value="/kf_camera" />
+    <param name="camera_frame_id" value="kinect2_rgb_optical_frame" />
+
+    <param name="publish_points" value="false" />
+    <param name="visualise" value="false" />
+    <param name="color_integration" value="true" />
+    <param name="use_hints" value="false" />
+    <param name="update_kinect_world_frame" value="true" />
+
+    <param name="volume_size" value="2.0" />
+    <param name="tsdf_trunc" value="0.005" />
+    <param name="icp_weight" value="0.01" />
+    <param name="camera_movement_threshold" value="0.001" />
+    <param name="gpu_device" value="0" />
+
+  </node>
+
+
+</launch>

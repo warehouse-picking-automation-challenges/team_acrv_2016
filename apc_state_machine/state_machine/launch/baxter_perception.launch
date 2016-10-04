@@ -1,0 +1,120 @@
+<launch>
+    <!-- define the machines that we can use (except localhost)  -->
+    <machine name="nuc" address="dockpc-nuc" default="false"
+        env-loader="/home/dockpc/ros_ws/ros_env.sh" user="dockpc" />
+
+    <!-- Parameters  -->
+    <arg name="kinect" default="true" />
+    <arg name="kinect_machine" value="nuc" /> <!--  default="localhost" -->
+    <arg name="realsense" default="true" />
+    <arg name="realsense_machine" value="nuc" /> <!--  default="localhost" -->
+    <arg name="pressure_sensor" default="true" />
+    <arg name="pressure_sensor_machine" value="nuc" /> <!--  default="localhost" -->
+
+    <arg name="static_shelf" default="false" />
+    <arg name="live_shelf" default="true" />
+    <arg name="shelf_scan" default="true" />
+    <arg name="stowing_task" default="false" />
+
+    <arg name="segmentation" default="true" />
+    <arg name="is_find_object_2d_gui" default="false" />
+    <arg name="is_find_object_2d" default="false" />
+
+    <arg name="left_arm" default="false"/>
+
+    <!-- launch the kinect and its static transform -->
+    <group if="$(arg kinect)">
+        <include file="$(find apc_rgbd_tf_calibration)/launch/baxter_kinect_calibrated.launch"/>
+
+        <!-- THESE SHOULD NOW RUN ON THE NUC!-->
+        <!-- <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch" >
+            <arg name="machine" value="$(arg kinect_machine)" />
+        </include> -->
+        <!-- <node name="kinect_toggle" cwd="node" pkg="baxter_kinect" type="kinect_toggle.py" output="screen" machine="$(arg kinect_machine)" /> -->
+        <node name="kinect_toggle" pkg="baxter_kinect" type="kinect_toggle.py" output="screen" respawn="true" machine="$(arg kinect_machine)" />
+    </group>
+
+    <!-- launch static shelf registration node -->
+    <group if="$(arg static_shelf)">
+        <include file="$(find baxter_kinect)/launch/shelf_tf.launch"/>
+    </group>
+
+    <group if="$(arg pressure_sensor)">
+        <node name="arduino_node" pkg="ros_arduino_python" type="arduino_node.py" output="screen" respawn="true" machine="$(arg pressure_sensor_machine)" />
+    </group>
+
+    <group if="$(arg shelf_scan)">
+        <node name="shelf_scan" pkg="apc_3d_vision" type="shelf_scan" output="screen" respawn="true" />
+    </group>
+
+    <!-- launch live shelf registration node -->
+    <group if="$(arg live_shelf)">
+        <include file="$(find apc_3d_vision)/launch/shelf_registration_ros_node.launch"/>
+    </group>
+
+    <!-- Realsense launch settings -->
+    <group if="$(arg realsense)">
+        <!-- remote launch files are dodgy (if you don't have the repo locally)
+         <include file="$(find ros_realsense)/launch/realsense_camera.launch">
+            <arg name="machine" value="$(arg realsense_machine)" />
+        </include>
+        include file="$(find ros_realsense)/launch/realsense_frames.launch">
+            <arg name="camera" value="$(arg camera)" />
+            <arg name="machine" value="$(arg machine)"/>
+         -->
+
+        <node name="ros_realsense" pkg="ros_realsense" type="ros_realsense_node"
+            output="screen" respawn="true" machine="$(arg realsense_machine)"/>
+
+        <!-- Realsense Frames  -->
+        <arg name="camera"    default="camera" />
+        <arg name="tf_prefix" default="" />
+
+        <arg name="pi/2" value="1.5707963267948966" />
+        <arg name="optical_rotate" value="0 0 0 -$(arg pi/2) 0 -$(arg pi/2)" />
+        <node pkg="tf" type="static_transform_publisher" machine="$(arg realsense_machine)"
+            name="$(arg camera)_base_link"
+            args="0 0 0 0 0 0 $(arg tf_prefix)/$(arg camera)_link $(arg tf_prefix)/$(arg camera)_rgb_frame 1000" />
+
+        <node pkg="tf" type="static_transform_publisher" machine="$(arg realsense_machine)"
+            name="$(arg camera)_base_link1"
+            args="0 -0.024 0 0 0 0 $(arg tf_prefix)/$(arg camera)_link $(arg tf_prefix)/$(arg camera)_depth_frame 1000" />
+
+        <node pkg="tf" type="static_transform_publisher" machine="$(arg realsense_machine)"
+            name="$(arg camera)_base_link2"
+            args="$(arg optical_rotate) $(arg tf_prefix)/$(arg camera)_rgb_frame $(arg tf_prefix)/$(arg camera)_rgb_optical_frame 1000" />
+
+        <node pkg="tf" type="static_transform_publisher" machine="$(arg realsense_machine)"
+            name="$(arg camera)_base_link3"
+            args="$(arg optical_rotate) $(arg tf_prefix)/$(arg camera)_depth_frame $(arg tf_prefix)/$(arg camera)_depth_optical_frame  1000" />
+    </group>
+
+
+    <!-- Transform between realsense camera and right hand -->
+    <include file="$(find apc_rgbd_tf_calibration)/launch/baxter_realsense_calibrated.launch">
+      <arg name="left_arm" default="$(arg left_arm)"/>
+    </include>
+
+
+    <!-- launch the 2d detection related nodes -->
+    <group if="$(arg is_find_object_2d)">
+        <include file="$(find find_object_2d)/launch/find_object_4d.launch">
+            <!-- <arg name="gui" value="$(arg is_find_object_2d_gui)"/> -->
+        </include>
+        <!-- <node name="find_object_2d_wrapper" pkg="find_object_2d" type="find_object_2d_wrapper.py" output="screen" cwd="node"/> -->
+    </group>
+
+    <!-- launch the 3d detection related nodes -->
+    <group if="$(arg segmentation)">
+        <include file="$(find segmentation_ros)/launch/segmentation_ros_node.launch"/>
+        <include file="$(find apc_3d_vision)/launch/shelf_based_image_cropper_james.launch"/>
+        <!-- <node name="segmentation_node" pkg="segmentation_ros" type="segmentation_ros_node" output="screen" cwd="node"/> -->
+        <node name="object_proposal_node" pkg="object_proposal" type="object_proposal_node" output="screen" cwd="node" respawn="True"/>
+        <!-- <include file="$(find apc_3d_vision)/launch/split_labelled_point_cloud_ros_node.launch"/> -->
+        <!-- <include file="$(find apc_3d_vision)/launch/fit_cad_models_ros_node.launch"/> -->
+    </group>
+
+    <group if="$(arg stowing_task)">
+        <include file="$(find apc_3d_vision)/launch/toteCropping.launch" />
+    </group>
+</launch>

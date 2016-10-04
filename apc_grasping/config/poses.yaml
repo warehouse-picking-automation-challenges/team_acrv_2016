@@ -1,0 +1,13 @@
+kleenex_tissue_box:
+    poses: {amount: 3, pose1: [0.3, 0, 0.3, 0, 90, 0],
+        pose2: [0.3, 0, 0.3, 0, 180, 0],
+        pose3: [0, 0.2, 0, -90, 0, 180]}
+
+platinum_pets_dog_bowl:
+    poses: {amount: 1, pose1: [0, 0, 0, 0, 0, 0]}
+
+fitness_gear_3lb_dumbbell:
+    poses: {amount: 1, pose1: [0, 0, 0, 0, 0, 0]}
+
+rawlings_baseball:
+    poses: {amount: 1, pose1: [0, 0, 0, 0, 0, 0]}

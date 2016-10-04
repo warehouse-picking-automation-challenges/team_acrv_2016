@@ -1,0 +1,11 @@
+<launch>
+    <!-- launch the mission plan and state machine -->
+    <include file="$(find mission_plan)/launch/stow_mission_plan.launch"/>
+    <rosparam command="load" file="$(find state_machine)/parameters/global.yaml"/>
+    <rosparam command="load" file="$(find state_machine)/parameters/shelf_layout.yaml"/>
+    <rosparam command="load" file="$(find state_machine)/parameters/item_weight_information.yaml"/>
+    <rosparam command="load" file="$(find state_machine)/parameters/tote_information.yaml"/>
+    <rosparam command="load" file="$(find state_machine)/parameters/item_id_mapping.yaml"/>
+    <param name="item_move_groups" value="$(find mission_plan)/mission_descriptions/pre_selected_object_move_groups_stow.json" type="str"/>
+    <node name="smach" pkg="state_machine" type="APC_STOW_MACHINE.py" output="screen" cwd="node"/>
+</launch>

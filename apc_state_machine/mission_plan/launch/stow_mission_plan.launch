@@ -1,0 +1,16 @@
+<launch>
+    <arg name="mission_strategy" default="default"/>
+    <param name="tell_me_the_task_again_please" value="stow" type="str"/>
+
+    <!-- does not really need to be set but can / should?  -->
+    <!-- # task is decided by the json file\:
+         # is there a work_order in the file? -> picking
+         # is there tote_contents in the file? -> stowing       -->
+
+    <arg name="mission_file" default="../mission_descriptions/stow.json"/>
+
+    <node name="mission_plan_node" pkg="mission_plan" type="mission_plan_node.py" output="screen" cwd="node" >
+        <param name="mission_file" value="$(arg mission_file)" type="str"/>
+    </node>
+
+</launch>

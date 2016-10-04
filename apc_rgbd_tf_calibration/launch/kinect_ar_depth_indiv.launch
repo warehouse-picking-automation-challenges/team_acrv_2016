@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="config" default="true"/>
+  <arg name="rviz_config" default="$(find apc_rgbd_tf_calibration)/launch/kinect_tf_calibration.rviz" />
+  <include file="$(find baxter_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="$(arg config)" />
+    <arg name="rviz_config" value="$(arg rviz_config)" />
+  </include>
+
+  <!-- AR tracker -->
+  <arg name="marker_size" default="9.44" />
+  <arg name="max_new_marker_error" default="0.08" />
+  <arg name="max_track_error" default="0.2" />
+
+  <arg name="cam_image_topic" default="/kinect2/qhd/points" />
+  <arg name="cam_info_topic" default="/kinect2/qhd/camera_info" />
+  <arg name="output_frame" default="/kinect2_rgb_optical_frame" />
+
+  <node name="ar_track_alvar" pkg="ar_track_alvar" type="individualMarkers" respawn="false" output="log" args="$(arg marker_size) $(arg max_new_marker_error) $(arg max_track_error) $(arg cam_image_topic) $(arg cam_info_topic) $(arg output_frame)" />
+  <!-- <node name="ar_track_alvar" pkg="ar_track_alvar" type="individualMarkers" respawn="false" output="screen" args="$(arg marker_size) $(arg max_new_marker_error) $(arg max_track_error) $(arg cam_image_topic) $(arg cam_info_topic) $(arg output_frame)" /> -->
+
+  <!-- tf calibration node -->
+  <param name="realsense" value="false" type="bool"/>
+  <param name="mode" value="manually" type="str"/>
+  <!-- <param name="mode" value="poseset" type="str"/> -->
+  <param name="arm" value="right_arm" type="str"/>
+  <!-- <param name="arm" value="left_arm" type="str"/> -->
+  <node name="apc_rgbd_tf_calibration" pkg="apc_rgbd_tf_calibration" type="kinect_calibration_without_moveit.py" output="screen"/>
+
+</launch>

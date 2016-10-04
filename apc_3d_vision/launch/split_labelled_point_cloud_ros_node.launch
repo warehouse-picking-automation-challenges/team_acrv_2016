@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<launch>
+  <node pkg="apc_3d_vision" type="split_labelled_point_cloud_ros_node" name="split_labelled_point_cloud" output="screen">
+  </node>
+</launch>

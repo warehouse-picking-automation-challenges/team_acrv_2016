@@ -1,0 +1,368 @@
+# apc_objects.yaml
+#
+# Peter Kujala
+# May 2016
+#
+#======================================#======================================
+# ===== Useful resources: =====
+# ROS Solid Primitives
+# http://docs.ros.org/jade/api/shape_msgs/html/msg/SolidPrimitive.html
+#
+#======================================#======================================
+#--------------------------------------#--------------------------------------
+apc_objects:
+
+  dove_beauty_bar: #int
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/  #has_mesh:dove_beauty_bar.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/visual_mesh/  #has_mesh:dove_beauty_bar.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 1                               #this is a box
+      - dimensions: [0.064, 0.034, 0.092]     # [box_x, box_y, box_z]
+  #--------------------------------------#--------------------------------------
+  rawlings_baseball:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/rawlings_baseball.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/visual_mesh/rawlings_baseball.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 2                               # (2) sphere)
+      - dimensions: [0.037]                   # [sphere_R]
+  #--------------------------------------#--------------------------------------
+  clorox_utility_brush:
+    has_visualMeshmesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/clorox_utility_brush_collision.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/clorox_utility_brush_collision.STL
+    has_geometry: false
+    #--------------------------------------#--------------------------------------
+  dr_browns_bottle_brush:
+    has_visualMeshmesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/dr_browns_bottle_brush.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/dr_browns_bottle_brush.STL
+    has_geometry: false
+#--------------------------------------#--------------------------------------
+  dasani_water_bottle:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/dasani_water_bottle.STL
+    has_collisionMesh: false
+    has_geometry: false
+    ##ADD GEOMETRY ---
+#--------------------------------------#--------------------------------------
+  easter_turtle_sippy_cup:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/easter_turtle_sippy_cup_collision.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/easter_turtle_sippy_cup_collision.STL
+    has_geometry: false
+  #--------------------------------------#--------------------------------------
+  cherokee_easy_tee_shirt:
+    has_visualMesh: false
+    #visualMesh: package://apc_objects/meshes/collision_mesh/.STL
+    has_collisionMesh: false
+    #collisionMesh: package://apc_objects/meshes/collision_mesh/.STL
+    has_geometry: false
+#--------------------------------------#--------------------------------------
+  folgers_classic_roast_coffee:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/folgers_classic_roast_coffee_collision.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/folgers_classic_roast_coffee_collision.STL
+    has_geometry: false
+    ##ADD GEOMETRY ---
+  #--------------------------------------#--------------------------------------
+  crayola_24_ct:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/crayola_24_ct.STL
+    has_collisionMesh: true                   #same as visual mesh
+    collisionMesh: package://apc_objects/meshes/visual_mesh/crayola_24_ct.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 1                               #this is a box
+      - dimensions: [0.071, 0.026, 0.096]     # [box_x, box_y, box_z]
+
+#  grasp_poses:
+#    - pose1[        ]
+#    - pose2[        ]
+#    - pose3[        ]
+  #--------------------------------------#--------------------------------------
+  peva_shower_curtain_liner:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/peva_shower_curtain_liner_visual.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/peva_shower_curtain_liner_collision.STL
+    has_geometry: false
+        ##ADD GEOMETRY ---
+
+    #--------------------------------------#--------------------------------------
+  barkely_hide_bones:
+    has_visualMesh: false
+    #visualMesh: package://apc_objects/meshes/collision_mesh/.STL
+    has_collisionMesh: false
+    #collisionMesh: package://apc_objects/meshes/collision_mesh/.STL
+    has_geometry: false
+    #--------------------------------------#--------------------------------------
+  kyjen_squeakin_eggs_plush_puppies:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/kyjen_squeakin_eggs_plush_puppies_collision.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/kyjen_squeakin_eggs_plush_puppies_collision.STL
+    has_geometry: false
+    #--------------------------------------#--------------------------------------
+  expo_dry_erase_board_eraser:
+    has_visualMesh: false
+    visualMesh: package://apc_objects/meshes/visual_mesh/expo_dry_erase_board_eraser_visual.STL
+    has_collisionMesh: false
+    collisionMesh: package://apc_objects/meshes/collision_mesh/expo_dry_erase_board_eraser_collision.STL
+    has_geometry: false
+    ## ADD GEOMETRY
+
+    #--------------------------------------#--------------------------------------
+  scotch_cloth_duct_tape:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/scotch_cloth_duct_tape.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/visual_mesh/scotch_cloth_duct_tape.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 1                               # cylinder
+      - dimensions: [0.048, 0.0485]           # [cylinder_H, cylinder_R]
+  #--------------------------------------#--------------------------------------
+  jane_eyre_dvd:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/jane_eyre_dvd.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/visual_mesh/jane_eyre_dvd.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 1                               #this is a box
+      - dimensions: [0.135, 0.192, 0.014]     # this is [box_x, box_y, box_z]
+    #--------------------------------------#--------------------------------------
+  scotch_bubble_mailer:
+    has_visualMesh: false
+    isualMesh: package://apc_objects/meshes/visual_mesh/scotch_bubble_visual.STL
+    has_collisionMesh: false
+    collisionMesh: package://apc_objects/meshes/collision_mesh/scotch_bubble_mailer_collision.STL
+    has_geometry: false
+    ### ADD GEOMETRY
+
+#--------------------------------------#--------------------------------------
+  wood_extension_cord:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/wood_extension_cord_collision.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/wood_extension_cord_collision.STL
+    has_geometry: false
+    #--------------------------------------#--------------------------------------
+  womens_knit_gloves:
+    has_visualMesh: false
+    #visualMesh: package://apc_objects/meshes/collision_mesh/.STL
+    has_collisionMesh: false
+    #collisionMesh: package://apc_objects/meshes/collision_mesh/.STL
+    has_geometry: false
+    #--------------------------------------#--------------------------------------
+  cool_shot_glue_sticks:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/cool_shot_glue_sticks_visual.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/cool_shot_glue_sticks_collision.STL
+    has_geometry: false
+    ### ADD GEOMETRY
+  #--------------------------------------#--------------------------------------
+  elmers_washable_no_run_school_glue:
+    has_visualMeshmesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/elmers_washable_no_run_school_glue.STL
+    has_collisionMesh:false
+    #collisionMesh: package://apc_objects/meshes/visual_mesh/elmers_washable_no_run_school_glue_collision.STL
+
+    has_geometry: true
+    solidPrimative:
+      - type: 1
+      - dimensions: [0.062, 0.146, 0.029]
+
+  #--------------------------------------#--------------------------------------
+  staples_index_cards:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/staples_index_cards.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/visual_mesh/staples_index_cards.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 1                               # (1))box
+      - dimensions: [0.127, 0.77, 0.019]      # [box_x, box_y, box_z]
+  #--------------------------------------#--------------------------------------
+  laugh_out_loud_joke_book:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/laugh_out_loud_joke_book.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/visual_mesh/laugh_out_loud_joke_book.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 1                               # (1))box
+      - dimensions: [0.108, 0.177, 0.009]     # [box_x, box_y, box_z]
+  #--------------------------------------#--------------------------------------
+  i_am_a_bunny_book:
+    has_visualMeshmesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/i_am_a_bunny_book.STL
+    has_collisionMesh: true                                  #SAME as visual
+    collisionMesh: package://apc_objects/meshes/visual_mesh/i_am_a_bunny_book.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 1                               # (1) this is a box
+      - dimensions: [0.170, 0.004, 0.201]     #[box_x, box_y, box_z]
+  #--------------------------------------#--------------------------------------
+  kleenex_tissue_box:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/kleenex_tissue_box.STL
+    has_collisionMesh: true                                  #SAME as visual
+    collisionMesh: package://apc_objects/meshes/collision_mesh/kleenex_tissue_box_collision.STL
+    has_geometry: true
+    solidPrimative:
+      - type: 1
+      - dimanesions: [0.113, 0.129, 0.110]
+  #--------------------------------------#--------------------------------------
+  soft_white_light_bulb:
+    has_visualMesh: true
+    visualMesh:  package://apc_objects/meshes/visual_mesh/soft_white_light_bulb.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/visual_mesh/soft_white_light_bulb.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 1
+      - dimensions: [0.062, 0.064, 0.118]
+  #--------------------------------------#--------------------------------------
+  kleenex_paper_towels:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/kleenex_paper_towels.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/visual_mesh/kleenex_paper_towels.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 3                               # (3) cylinder
+      - dimensions: [0.280, 0.058]            # [cylinder_H, cylinder_R]
+  #--------------------------------------#--------------------------------------
+  rolodex_jumbo_pencil_cup:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/rolodex_jumbo_pencil_cup_collision.STL
+    has_collisionMesh: true                                  #SAME as visual
+    collisionMesh: package://apc_objects/meshes/collision_mesh/rolodex_jumbo_pencil_cup_cylinder.STL
+    has_geometry: true
+    solidPrimative:
+        - type: 3
+        - dimensions: [0.135, 0.055 ]
+  #--------------------------------------#--------------------------------------
+  ticonderoga_12_pencils:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/ticonderoga_12_pencils.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/ticonderoga_12_pencils_collision.STL
+    has_geometry: true
+    solidPrimative:
+      - type: 1
+      - dimensions: [0.214, 0.0095, 0.096]
+  #--------------------------------------#--------------------------------------
+  platinum_pets_dog_bowl:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/platinum_pets_dog_bowl.STL
+    has_collisionMesh: false
+    has_geometry: true
+    solidPrimitive:
+      - type: 2
+      - dimensions: [0.0325, 0.059]
+
+    #--------------------------------------#--------------------------------------
+    hanes_tube_socks:
+      has_visualMesh: true
+      visualMesh: package://apc_objects/meshes/visual_mesh/hanes_tube_socks_visual.STL
+      has_collisionMesh: true
+      collision_mesh: package://apc_objects/meshes/collision_mesh/hanes_tube_socks_collision.STL
+      has_geometry: false
+  #    solidPrimitive:
+  #      - type: 1
+  #      - dimensions: [ x, y, z]
+  #--------------------------------------#--------------------------------------
+  creativity_chenille_stems:
+    has_visualMeshmesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/creativity_chenille_stems_visual.STL
+    has_collisionMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/creativity_chenille_stems_collision.STL
+    has_geometry: false
+    ###ADD GEOMETRY
+  #--------------------------------------#--------------------------------------
+  fiskars_scissors_red:
+    has_visualMeshmesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/fiskars_scissors_red_visual.STL
+    has_collisionMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/fiskars_scissors_red_collision.STL
+    has_geometry: false
+    ## ADD GEOMETRY
+  #--------------------------------------#--------------------------------------
+  cloud_b_plush_bear:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/cloud_b_plush_bear_collision.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/cloud_b_plush_bear_collision.STL
+    has_geometry: false
+  #--------------------------------------#--------------------------------------
+  safety_first_outlet_plugs:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/safety_first_outlet_plugs_visual.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/safety_first_outlet_plugs_collision.STL
+    has_geometry: false
+  #--------------------------------------#--------------------------------------
+  fitness_gear_3lb_dumbell:
+    has_visualMeshmesh: true
+    visualMesh: package://apc_objects/meshes/visual_mesh/fitness_gear_3lb_dumbell.STL
+    has_collisionMesh: false
+    ##ADDcCOLLISION MESH
+    has_geometry: true
+    solidPrimitive:
+      - type: 2
+      - dimensions: [0.154, 0.038]
+  #--------------------------------------#--------------------------------------
+  oral_b_toothbrush_green:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/oral_b_toothbrush_green_collision.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/oral_b_toothbrush_green_collision.STL
+    has_geometry: true
+    soldiPrimitive:
+      - type: 1
+      - dimensions: [0.026, 0.021, 0.220]
+  #--------------------------------------#--------------------------------------
+  up_glucose_bottle:
+    has_mesh: true
+    mesh: package://apc_objects/meshes/visual_mesh/up_glucose_bottle.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/visual_mesh/up_glucose_bottle.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 2
+      - dimensions: [0.143, 0.0345]
+  #--------------------------------------#--------------------------------------
+  command_hooks:
+    has_mesh: true
+    mesh: package://apc_objects/meshes/visual_mesh/command_hooks_visual.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/command_hooks_collision.STL
+    has_geometry: true
+    solidPrimitive:
+      - type: 1
+      - dimensions: [0.121, 0.0455, 0.1705]
+  #--------------------------------------#--------------------------------------
+  oral_b_toothbrush_red:
+    has_visualMesh: true
+    visualMesh: package://apc_objects/meshes/collision_mesh/oral_b_toothbrush_red_collision.STL
+    has_collisionMesh: true
+    collisionMesh: package://apc_objects/meshes/collision_mesh/oral_b_toothbrush_red_collision.STL
+    has_geometry: true
+    soldiPrimitive:
+      - type: 1
+      - dimensions: [0.026, 0.021, 0.220]
+
+  #--------------------------------------#--------------------------------------

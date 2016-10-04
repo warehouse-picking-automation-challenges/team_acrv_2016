@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<launch>
+  <node pkg="apc_3d_vision" type="fit_cad_models_ros_node" name="fit_cad_models" output="screen">
+  </node>
+</launch>

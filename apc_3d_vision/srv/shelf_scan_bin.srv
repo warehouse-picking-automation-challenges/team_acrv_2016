@@ -1,0 +1,6 @@
+std_msgs/String move_group
+std_msgs/String bin_id
+std_msgs/Float32 scan_radius
+std_msgs/Bool set_scan_radius
+---
+std_msgs/Bool success

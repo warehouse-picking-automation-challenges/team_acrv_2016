@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <node pkg="apc_3d_vision" type="float_objects_ros_node" name="floating_objects" output="screen">
+
+    <param name="distanceThreshold" value="0.002" />
+
+  </node>
+
+</launch>
+
+<!--
+The Transformation Epsilon parameter defines minimum, allowable,
+incremental change of the transformation vector, [x, y, z, roll, pitch, yaw] in
+meters and radians respectively. Once the incremental change dips below this
+threshold, the alignment terminates.
+
+The Step Size parameter defines the maximum
+step length allowed by the More-Thuente line search. This line search algorithm
+determines the best step length below this maximum value, shrinking the step
+length as you near the optimal solution. Larger maximum step lengths will be
+able to clear greater distances in fewer iterations but run the risk of
+overshooting and ending up in an undesirable local minimum.
+
+Finally, the
+Resolution parameter defines the voxel resolution of the internal NDT grid
+structure. This structure is easily searchable and each voxel contain the
+statistical data, mean, covariance, etc., associated with the points it
+contains. The statistical data is used to model the cloud as a set of
+multivariate Gaussian distributions and allows us to calculate and optimize the
+probability of the existence of points at any position within the voxel. This
+parameter is the most scale dependent. It needs to be large enough for each
+voxel to contain at least 6 points but small enough to uniquely describe the
+environment.
+
+Next we need to modify some of the scale dependent parameters. Because the NDT
+algorithm uses a voxelized data structure and More-Thuente line search, some
+parameters need to be scaled to fit the data set. The above parameters seem to
+work well on the scale we are working with, size of a room, but they would need
+to be significantly decreased to handle smaller objects, such as scans of a
+coffee mug.
+-->

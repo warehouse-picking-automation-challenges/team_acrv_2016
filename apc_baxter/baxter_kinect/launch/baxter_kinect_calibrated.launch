@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="pi/2" value="1.5707963267948966" />
+
+  <!-- <arg name="baxter_link_pose" value="0.105 -0.055 0.94 -1.6 0 -2.175"/> -->
+  <!-- <arg name="baxter_link_pose" value="0.1122 -0.0513 0.9339 -1.6335 -0.0164 -2.1731"/> -->
+  <!-- <arg name="baxter_link_pose" value="0.1105 -0.0609 0.9470 -1.6235 -0.0194 -2.1859"/> -->
+
+  <!--  These parameters are guess-timates for the current configuration
+        May 10, 2016 when Baxter is rotated to face the shelf with its
+        left arm (i.e. around 45 degrees out of parallel)                   -->
+  <!-- <arg name="baxter_link_pose" value="0.1105 -0.0609 0.9470 -0.53 -0.0194 -2.1859"/>  -->
+  <arg name="baxter_link_pose" value="0.1505 -0.0209 0.9470 -0.53 -0.0194 -2.1859"/>
+
+
+  <!-- <arg name="baxter_link_pose" value="0.104090758146053 -0.0586821114661540 0.941998260953710 -1.61761340239840 -0.0182759137459767 -2.17204832712182"/> -->
+  <!-- <arg name="baxter_link_pose" value="0.1037 -0.0581 0.9440 -1.6183 -0.0179 -2.1735"/> -->
+  <!-- <arg name="baxter_link_pose" value="0.1105 -0.0609 0.9470 -1.6235 -0.0194 -2.1859"/> -->
+  <!-- <arg name="baxter_link_pose" value="0.1169 -0.0554 0.9568 -1.6385 -0.0212 -2.2062"/> -->
+
+  <!-- <arg name="baxter_link_pose" value="0.068 0.005 0.965 -0.037-pi/2 -0.114 -(0.636+pi/2) "/> -->
+  <!-- <arg name="baxter_link_pose" value="0.12 -0.05 0.965 -1.607 -0.0 -2.206"/> -->
+
+  <!-- - Translation: [0.068 0.005 0.965]
+  - Rotation: in Quaternion [0.000 0.313 -0.048 0.948]
+              in RPY (radian) [-0.037 0.636 -0.114]
+              in RPY (degree) [-2.120 36.465 -6.522] -->
+
+
+  <node pkg="tf" type="static_transform_publisher" name="baxter_kinect_link_broadcaster"
+               args="$(arg baxter_link_pose) /base /kinect2_link 10" />
+               <!-- args="$(arg baxter_link_pose) /world /kinect2_link 100" /> -->
+</launch>

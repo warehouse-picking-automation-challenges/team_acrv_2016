@@ -1,0 +1,12 @@
+<launch>
+    <arg name="pi/2" value="1.5707963267948966" />
+  <!-- <arg name="optical_rotate" value="0 0 0 -$(arg pi/2) 0 -$(arg pi/2)" /> -->
+ <!--arg name="baxter_link_pose" value="x? y? z? z_rot x_rot y_rot"-->
+
+    <arg name="baxter_link_pose" value="0 0 0 3.14159 0 0"/>
+    <arg name="baxter_link_pose2" value="0 0 0 0 0 0"/>
+    <node pkg="tf" type="static_transform_publisher" name="baxter_camera_rotation"
+          args="$(arg baxter_link_pose) /head_camera /head_camera_rot 10" />
+    <node pkg="tf" type="static_transform_publisher" name="baxter_left_camera_rotation"
+          args="$(arg baxter_link_pose2) /left_hand_camera /left_hand_camera_rot 10" />
+</launch>

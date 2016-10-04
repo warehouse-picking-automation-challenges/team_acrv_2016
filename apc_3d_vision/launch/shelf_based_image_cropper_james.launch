@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<launch>
+  <param name="current_bin" value="bin_D" />
+  <arg name="no_kinfu" value="false" />
+  <param name="/shelf_based_image_cropper_node/pc_topic" value="/ros_kinfu/depth_registered/points" unless="$(arg no_kinfu)" />
+  <param name="/shelf_based_image_cropper_node/ref_tf" value="kf_world" unless="$(arg no_kinfu)" />
+  <param name="/shelf_based_image_cropper_node/publish" value="false" />
+  <node pkg="apc_3d_vision" type="shelf_based_image_cropper_node_james" name="shelf_based_image_cropper_node" output="screen">
+      <rosparam command="load" file="$(find apc_3d_vision)/launch/BinDim.yaml" />
+  </node>
+</launch>

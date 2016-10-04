@@ -1,0 +1,4 @@
+---
+std_msgs/String bin
+std_msgs/String item
+std_msgs/Int32 id

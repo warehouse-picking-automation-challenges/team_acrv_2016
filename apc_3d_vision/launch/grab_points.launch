@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<launch>
+  <node pkg="apc_3d_vision" type="grab_points" name="grab_points_ros_node" output="screen">
+    <param name="depth_image_fn" value="$(find apc_3d_vision)/models/points.csv" />
+    <param name="points_topic" value="/realsense/points" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+  </node>
+</launch>
